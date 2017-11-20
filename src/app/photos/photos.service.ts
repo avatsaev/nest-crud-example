@@ -3,7 +3,7 @@ import { Repository } from 'typeorm';
 import { Photo } from './photo.entity';
 
 @Component()
-export class PhotoService {
+export class PhotosService {
   constructor(
     @Inject('PhotoRepositoryToken') private readonly photoRepository: Repository<Photo>
   ) {}
@@ -12,12 +12,12 @@ export class PhotoService {
     try {
       return await this.photoRepository.find();
     } catch (err) {
-      return {err}
+      return {err};
     }
   }
 
   async show(id: number) {
-    try{
+    try {
       return await this.photoRepository.findOneById(id)
     } catch (err) {
       return {err};
@@ -36,15 +36,13 @@ export class PhotoService {
   }
 
   async create(p: Photo) {
-    try{
+    try {
         return await this.photoRepository.save(p);
     } catch (err) {
       return {err};
     }
 
   }
-
-
 
   async destroy(id: number) {
 
@@ -53,7 +51,6 @@ export class PhotoService {
     } catch (err) {
       return {err};
     }
-
 
   }
 }

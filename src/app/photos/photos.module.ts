@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { PhotoService } from './photos.service';
+import { PhotosService } from './photos.service';
 import {Connection} from 'typeorm';
 import {Photo} from './photo.entity';
 
@@ -10,10 +10,10 @@ import {Photo} from './photo.entity';
         useFactory: (connection: Connection) => connection.getRepository(Photo),
         inject: ['DbConnectionToken'],
     },
-    PhotoService,
+    PhotosService,
   ],
   exports: [
-    PhotoService,
+    PhotosService,
   ]
 })
 export class PhotosModule {}
